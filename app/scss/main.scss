@@ -7,11 +7,40 @@
 
 body{
     font-family: 'PT Serif', serif;
+    display: flex;
+    justify-content: center;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
 }
 
 h1 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
+    font-size: 3rem;
+    color: $color1;
+    text-align: center;
+    margin: 4rem 0 3rem 0;
+}
+
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 0.8rem;
     color: $color1;
 }
 
+button {
+    background-color: $color1;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    color: white;
+    padding: 8px;
+}
+
+@import "partials/tasklist";

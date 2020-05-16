@@ -6,8 +6,7 @@
     <title>Tasklist Challenge – WebProfessionals</title>
 
     <link rel="stylesheet" href="dev/main.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=PT+Serif&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&family=PT+Serif&display=swap" rel="stylesheet">
 
 </head>
 <body>
@@ -15,6 +14,15 @@
         <h1>Taskliste</h1>
 
         <div class="tasklist">
+
+            <!-- titelzeile -->
+            <div class='tasklist__taskline tasklist__tabletitleline'>
+                <h2 class='tasklist_tabletitle'>Task</h2>
+                <h2 class='tasklist_tabletitle'>Duedate</h2>
+                <hr>
+            </div>
+
+            <!-- liste -->
             <?php
 
                 require_once("init.php");
@@ -23,11 +31,12 @@
                 $taskLoader = new TaskLoader();
                 $alltasks = $taskLoader->getAll();
 
+                //alle als zeile ausgeben
                 foreach ($alltasks as $task){
                     $tasktitle = $task['title'];
                     $taskduedate = $task['duedate'];
                     $taskid = $task['id'];
-                    echo "<div class='tasklist__taskline'><h3 class='tasklist_tasktitle'>$tasktitle</h3><p>$taskduedate</p><a href='task-list-details.php?id=$taskid'class='tasklist_taskdetails'><button>Details</button></a><button class='tasklist_edit'>Bearbeiten</button><button class='tasklist_delete'>Löschen</button></div>";
+                    echo "<div class='tasklist__taskline'><h3 class='tasklist_tasktitle'>$tasktitle</h3><p>$taskduedate</p><a href='task-list-details.php?id=$taskid'class='tasklist_taskdetails'><button>Details</button></a><button class='tasklist_edit'>Bearbeiten</button><button class='tasklist_delete'>Löschen</button></div><hr>";
                 }
 
                 
