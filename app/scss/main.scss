@@ -1,0 +1,17 @@
+@import "partials/normalize";
+@import "partials/colors";
+
+*, :after{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'PT Serif', serif;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    color: $color1;
+}
+

@@ -10,7 +10,7 @@
             //fetch
             $one = $statement-> fetch();
 
-            //wenns nicht existiert, dann fehlermeldung, sonst ausgeben
+            //wenns nicht existiert, dann null zurückgeben, sonst ausgeben
             if (empty($one)){
                 return null;
             } else{
