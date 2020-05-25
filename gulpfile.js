@@ -93,6 +93,7 @@ function runWatch() {
     startBrowserSync();
     gulp.watch('app/scss/**/*.scss', runSass);
     gulp.watch('app/**/*.html', reload);
+    gulp.watch('app/**/*.php', reload);
     gulp.watch(
         ['app/js/**/*.js', "!app/js/**/*-bundle.js"], 
         gulp.series(bundleJS, reload)
@@ -102,9 +103,13 @@ function runWatch() {
 
 function startBrowserSync() {
     browserSync.init({
-        server: {
-            baseDir: 'app'
-        }
+        //für localhost
+        proxy: "http://localhost/dev/dev-php-tasklist/app" //korrekten link angeben!
+
+        //für live
+        //server: {
+        //    baseDir: 'app'
+        //}
     });
 }
 

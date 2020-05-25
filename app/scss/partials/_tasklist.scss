@@ -2,9 +2,46 @@
 
     &__taskline{
         display: grid;
-        grid-template-columns: 50% 20% 10% 10% 10%;
+        grid-template-columns: 55% 15% 10% 10% 10%;
         grid-template-rows: auto;
         align-items: center;
+    }
+
+    &__details{
+        background-image: url("../img/detail.svg");
+
+        &:hover{
+            background-color: darken($color4, 20%);
+        }
+    }
+
+    &__edit{
+        background-image: url("../img/edit.svg");
+
+        &:hover{
+            background-color: darken($color4, 20%);
+        }
+    }
+
+    &__delete{
+        background-image: url("../img/delete.svg");
+
+        &:hover{
+            background-color: $color5;
+        }
+    }
+
+    &__taskbutton {
+        background-color: $color4;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 80%;
+        border-radius: 5px;
+        width: 3rem;
+        height: 3rem;
+        justify-self: right;
+
+
     }
 
 

@@ -1,0 +1,33 @@
+.functions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4rem;
+    //background-color: $color4;
+    border-radius: 5px;
+    margin: 0 0 4rem 0;
+
+    a{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 13rem;
+        height: 2rem;
+        margin: 0 1rem;
+        border-radius: 5px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 800;
+        font-size: 0.8rem;
+        color: white;
+        background-color: $color1;
+    }
+
+
+    &__newTask:hover{
+        background-color: $color3;
+    }
+
+    &__deleteAll:hover{
+        background-color: $color5;
+    }
+}

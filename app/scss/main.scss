@@ -34,13 +34,5 @@ h2 {
     color: $color1;
 }
 
-button {
-    background-color: $color1;
-    border-radius: 5px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.9rem;
-    color: white;
-    padding: 8px;
-}
-
 @import "partials/tasklist";
+@import "partials/functions";
