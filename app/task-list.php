@@ -9,7 +9,7 @@ require("head.php");
 
         <!-- buttons -->
         <div class="functions">
-            <a class="functions__newTask">neuen Task erstellen</a>
+            <a href="new-task.php" class="functions__newTask">neuen Task erstellen</a>
             <a class="functions__deleteAll">alle Tasks löschen</a>
         </div>
 
