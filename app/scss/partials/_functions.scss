@@ -24,10 +24,14 @@
 
 
     &__newTask:hover{
-        background-color: $color3;
+        background-color: lighten($color1, 20%);
     }
 
     &__deleteAll:hover{
         background-color: $color5;
+    }
+
+    &__back:hover{
+        background-color: lighten($color1, 20%);
     }
 }

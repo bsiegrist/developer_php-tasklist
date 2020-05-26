@@ -1,24 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<?php
+require("head.php");
+?>
 
+<body>
     <?php
 
-        require_once("init.php");
+    require_once("init.php");
 
-        //hole alle ein task aus der DB als Array mit GET
-        $taskLoader = new TaskLoader();
-        $onetask = $taskLoader->getOneByID($_GET["id"]);
+    //hole ein task aus der DB als Array mit GET
+    $taskLoader = new TaskLoader();
+    $onetask = $taskLoader->getOneByID($_GET["id"]);
 
-
-        print_array($onetask);
+    $tasktitle = $onetask['title'];
+    $taskduedate = $onetask['duedate'];
+    $userID = $onetask['user_id'];
+    $taskdescription = $onetask['description'];
+    $taskstatus = $onetask['status_id'];
 
     ?>
-    
+
+    <main>
+        <h1>Taskliste</h1>
+
+        <?php
+            echo "<h2 class='tasktitle'>$tasktitle</h2>";
+        ?>
+
+        <div class="detail">
+            <?php
+                echo "<p class='detail__description'>$taskdescription</p>";
+                echo "<h3>Status:</h3> <p>$taskstatus</p>";
+                echo "<h3>Zu erledigen bis:</h3> <p>$taskduedate</p>";
+                echo "<h3>Verantwortlich:</h3> <p>$userID</p>";
+            ?>
+        </div>
+
+        <!-- buttons -->
+        <div class="functions">
+            <a href="task-list.php" class="functions__back">zurück zur Übersicht</a>
+        </div>
+
+    </main>
 </body>
 </html>

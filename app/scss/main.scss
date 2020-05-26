@@ -15,10 +15,18 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 80%;
+    width: 60%;
 }
 
-h1 {
+p{
+    margin: 0.5rem 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+h1{
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     font-size: 3rem;
@@ -27,12 +35,14 @@ h1 {
     margin: 4rem 0 3rem 0;
 }
 
-h2 {
+h2, h3{
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
     font-size: 0.8rem;
     color: $color1;
 }
 
+
 @import "partials/tasklist";
+@import "partials/tasklist-details";
 @import "partials/functions";

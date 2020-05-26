@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tasklist Challenge – WebProfessionals</title>
+<?php
+require("head.php");
+?>
 
-    <link rel="stylesheet" href="dev/main.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&family=PT+Serif&display=swap" rel="stylesheet">
 
-</head>
 <body>
     <main>
         <h1>Taskliste</h1>
@@ -25,8 +19,8 @@
             <div class='tasklist__taskline tasklist__tabletitleline'>
                 <h2 class='tasklist_tabletitle'>Task</h2>
                 <h2 class='tasklist_tabletitle'>Duedate</h2>
-                <hr>
             </div>
+            <hr>
 
             <!-- liste -->
             <?php
