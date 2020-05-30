@@ -11,9 +11,11 @@ require("head.php");
     $taskLoader = new TaskLoader();
     $allUsers = $taskLoader->getUsers();
 
-    print_array($allUsers);
+    //hole alle status aus der DB als Array
+    $allStatus = $taskLoader->getStatus();
 
     ?>
+
     <h1>Taskliste</h1>
     <main>
         
@@ -37,14 +39,21 @@ require("head.php");
                         }
                         
                         ?>
-                        
+
                     </select>
                 </div>
                 <div class="newTask__status">
                     <label for="status">Status:</label>
                     <select id="status">
-                        <option value="open">Open</option>
-                        <option value="done">Done</option>
+
+                        <?php
+
+                            foreach($allStatus as $status){
+                            echo "<option value='$status[name]'>$status[display_name]</option>";
+                            }
+
+                        ?>
+
                     </select>
                 </div>
                 <div class="newTask__title">
