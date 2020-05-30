@@ -7,6 +7,12 @@ require("head.php");
 
     require_once("init.php");
 
+    //hole alle user aus der DB als Array
+    $taskLoader = new TaskLoader();
+    $allUsers = $taskLoader->getUsers();
+
+    print_array($allUsers);
+
     ?>
     <h1>Taskliste</h1>
     <main>
@@ -23,8 +29,15 @@ require("head.php");
                 <div class="newTask__user">
                     <label for="user">Verantwortlich:</label>
                     <select id="user">
-                        <option value="Barbara">Barbara Siegrist</option>
-                        <option value="Nicole">Nicole Frischknecht</option>
+
+                        <?php
+
+                        foreach($allUsers as $user){
+                            echo "<option value='$user[lastname]'>$user[name] $user[lastname]</option>";
+                        }
+                        
+                        ?>
+                        
                     </select>
                 </div>
                 <div class="newTask__status">

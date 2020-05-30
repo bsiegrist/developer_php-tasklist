@@ -29,6 +29,17 @@
             return $all;
         }
 
+        public function getUsers(){
+            //prepared statement
+            $statement = DB::get()->prepare("SELECT * FROM user");
+            //execute
+            $statement -> execute();
+            //fetch
+            $users = $statement->fetchAll();
+            //return
+            return $users;
+        }
+
         /*
         public function getOneByIDAndUser($id){
             //prepared statement
