@@ -36,7 +36,7 @@ require("head.php");
                     $tasktitle = $task['title'];
                     $taskduedate = $task['duedate'];
                     $taskid = $task['id'];
-                    echo "<div class='tasklist__taskline'><h3 class='tasklist_tasktitle'>$tasktitle</h3><p>$taskduedate</p><a href='task-list-details.php?id=$taskid' class='tasklist__taskbutton tasklist__details'></a><a class='tasklist__taskbutton tasklist__edit'></a><a class='tasklist__taskbutton tasklist__delete'></a></div><hr>";
+                    echo "<div class='tasklist__taskline'><h3 class='tasklist_tasktitle'>$tasktitle</h3><p>$taskduedate</p><a href='task-list-details.php?id=$taskid' class='tasklist__taskbutton tasklist__details'></a><a href='edit-task.php?id=$taskid' class='tasklist__taskbutton tasklist__edit'></a><a class='tasklist__taskbutton tasklist__delete'></a></div><hr>";
                 }
 
                 
