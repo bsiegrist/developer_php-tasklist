@@ -9,7 +9,8 @@ body{
     font-family: 'Montserrat', sans-serif;
     font-size: 0.8rem;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 main{
@@ -24,7 +25,6 @@ a{
 }
 
 h1{
-    font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     font-size: 3rem;
     color: $color1;
@@ -33,13 +33,14 @@ h1{
 }
 
 h2, h3{
-    font-family: 'Montserrat', sans-serif;
     font-weight: 800;
     font-size: 0.8rem;
     color: $color1;
+    margin-top: 0;
 }
 
 
 @import "partials/tasklist";
 @import "partials/tasklist-details";
 @import "partials/functions";
+@import "partials/tasklist-new";

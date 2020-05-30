@@ -1,0 +1,53 @@
+.newTask{
+    padding: 1rem;
+    background-color: $color4;
+
+    & label{
+        display: inline-block;
+        width: 30%;
+        font-weight: 800;
+        font-size: 0.8rem;
+        color: white;
+    }
+
+
+    & form{
+        display: flex;
+        flex-direction: column;
+
+        & > * {
+            margin: 1rem 0;
+        }
+    }
+
+    &__title input{
+        width: 69.5%;
+    }
+
+    &__description{
+        display: flex;
+    }
+
+    &__description textarea{
+        min-height: 5rem;
+        margin-left:5px;
+        width: 70%;
+    }
+
+    &__savebutton{
+            width: 13rem;
+            height: 2rem;
+            border-radius: 5px;
+            font-weight: 800;
+            font-size: 0.8rem;
+            color: white;
+            background-color: $color1;
+            border-style: none;
+            margin: 1rem 0 0.5rem 0;
+            align-self: flex-end;
+    
+        &:hover{
+            background-color: lighten($color1, 20%);
+        }
+    }
+}

@@ -4,8 +4,8 @@ require("head.php");
 
 
 <body>
+    <h1>Taskliste</h1>
     <main>
-        <h1>Taskliste</h1>
 
         <!-- buttons -->
         <div class="functions">

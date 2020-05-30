@@ -19,8 +19,14 @@ require("head.php");
 
     ?>
 
+    <h1>Taskliste</h1>
+    
     <main>
-        <h1>Taskliste</h1>
+
+        <!-- buttons -->
+        <div class="functions">
+            <a href="task-list.php" class="functions__back">zurück zur Übersicht</a>
+        </div>
 
         <?php
             echo "<h2 class='tasktitle'>$tasktitle</h2>";
@@ -35,10 +41,6 @@ require("head.php");
             ?>
         </div>
 
-        <!-- buttons -->
-        <div class="functions">
-            <a href="task-list.php" class="functions__back">zurück zur Übersicht</a>
-        </div>
 
     </main>
 </body>
