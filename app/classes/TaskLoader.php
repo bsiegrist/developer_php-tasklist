@@ -51,24 +51,6 @@
             return $stats;
         }
 
-        /*
-        public function getOneByIDAndUser($id){
-            //prepared statement
-            $statement = DB::get()->prepare("SELECT * FROM task WHERE id = :number LEFT JOIN user ON task.user_id = user.id");
-            //execute
-            $statement -> execute(array(':number' => $id));
-            //fetch
-            $oneWithUser = $statement-> fetch();
-
-            //wenns nicht existiert, dann null zurückgeben, sonst ausgeben
-            if (empty($oneWithUser)){
-                return null;
-            } else{
-                return $oneWithUser;
-            }
-        }
-        */
-
     }
 
 

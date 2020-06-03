@@ -14,6 +14,21 @@ require("head.php");
     //hole alle status aus der DB als Array
     $allStatus = $taskLoader->getStatus();
 
+    //save
+    $taskSaver = new TaskSaver();
+
+    if(isset($_POST['save'])){
+        $saveTitle = $_POST['title'];
+        $saveUser = $_POST['user'];
+        $saveStatus = $_POST['status'];
+        $saveDescription = $_POST['description'];
+        $saveDate = $_POST['date'];
+        $saveDuration = 500;
+        $taskSaver->saveTask($saveUser, $saveStatus, $saveTitle, $saveDescription, $saveDuration, $saveDate);
+
+        echo "<div class='infobox'>new Task is saved</div>";
+    }
+
     ?>
 
     <h1>Taskliste</h1>
@@ -27,15 +42,19 @@ require("head.php");
         <h2 class='tasktitle'>Neuen Task erstellen</h2>
 
         <div class="newTask">
-            <form>
+            <form method="POST" action="new-task.php">
+                <div class="newTask__title">
+                    <label for="title">Titel:</label>
+                    <input id="title" type="text" name="title">
+                </div>
                 <div class="newTask__user">
                     <label for="user">Verantwortlich:</label>
-                    <select id="user">
+                    <select id="user" name="user">
 
                         <?php
 
                         foreach($allUsers as $user){
-                            echo "<option value='$user[lastname]'>$user[name] $user[lastname]</option>";
+                            echo "<option value='$user[id]'>$user[name] $user[lastname]</option>";
                         }
                         
                         ?>
@@ -44,21 +63,17 @@ require("head.php");
                 </div>
                 <div class="newTask__status">
                     <label for="status">Status:</label>
-                    <select id="status">
+                    <select id="status" name="status">
 
                         <?php
 
                             foreach($allStatus as $status){
-                            echo "<option value='$status[name]'>$status[display_name]</option>";
+                            echo "<option value='$status[id]'>$status[display_name]</option>";
                             }
 
                         ?>
 
                     </select>
-                </div>
-                <div class="newTask__title">
-                    <label for="title">Titel:</label>
-                    <input id="title" type="text" name="title">
                 </div>
                 <div class="newTask__description">
                     <label for="description">Beschreibung:</label>
@@ -68,7 +83,7 @@ require("head.php");
                     <label for="date">Zu erledigen bis:</label>
                     <input id="date" type="date" name="date">
                 </div>
-                <button class="newTask__savebutton">speichern</button>
+                <input type="submit" class="newTask__savebutton" value="speichern" name="save">
             </form>
             
         </div>

@@ -39,6 +39,14 @@ h2, h3{
     margin-top: 0;
 }
 
+.infobox{
+    background-color: $color5;
+    padding: 2rem;
+    color: white;
+    margin-top: 4rem;
+    border-radius: 5px;
+}
+
 
 @import "partials/tasklist";
 @import "partials/tasklist-details";
