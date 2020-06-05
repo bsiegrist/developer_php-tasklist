@@ -16,6 +16,7 @@ require("head.php");
     $userID = $onetask['user_id'];
     $taskdescription = $onetask['description'];
     $taskstatus = $onetask['status_id'];
+    $taskID = $onetask['id'];
 
     ?>
 
@@ -35,6 +36,7 @@ require("head.php");
         <div class="detail">
             <?php
                 echo "<p class='detail__description'>$taskdescription</p>";
+                echo "<h3>ID:</h3><p>$taskID</p>";
                 echo "<h3>Status:</h3> <p>$taskstatus</p>";
                 echo "<h3>Zu erledigen bis:</h3> <p>$taskduedate</p>";
                 echo "<h3>Verantwortlich:</h3> <p>$userID</p>";

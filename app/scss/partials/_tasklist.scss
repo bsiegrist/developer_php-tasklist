@@ -5,6 +5,10 @@
         grid-template-columns: 55% 15% 10% 10% 10%;
         grid-template-rows: auto;
         align-items: center;
+
+        h3{
+            margin: 1rem 0;
+        }
     }
 
     &__details{

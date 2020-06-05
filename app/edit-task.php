@@ -40,7 +40,11 @@ require("head.php");
         <h2 class='tasktitle'>Task bearbeiten</h2>
 
         <div class="newTask">
-            <form method="post" action="edit-task.php">
+            <form method="post" action="<?php echo "edit-task.php?id=$taskID"?>">
+            <div class="newTask__ID">
+                    <label for="id">ID-Nummer:</label>
+                    <input id="id" type="text" name="id" value="<?php echo $taskID; ?>">
+                </div>
                 <div class="newTask__title">
                     <label for="title">Titel:</label>
                     <input id="title" type="text" name="title" value="<?php echo $tasktitle; ?>">
@@ -105,8 +109,7 @@ require("head.php");
             $saveDescription = $_POST['description'];
             $saveDate = $_POST['date'];
             $saveDuration = 500;
-            $taskSaver->updateTask($saveUser, $saveStatus, $saveTitle, $saveDescription, $saveDuration, $saveDate);
-
+            $taskSaver->updateTask($taskID, $saveUser, $saveStatus, $saveTitle, $saveDescription, $saveDuration, $saveDate);
 
             echo "<div class='infobox'>new Task is updated</div>";
         }
