@@ -1,5 +1,7 @@
 <?php
+require_once("init.php");
 require("head.php");
+
 ?>
 
 
@@ -13,6 +15,14 @@ require("head.php");
             <a class="functions__deleteAll">alle Tasks löschen</a>
         </div>
 
+        <!--message anzeigen-->
+        <?php
+            if(isset($_SESSION['message'])){
+                echo $_SESSION['message'];
+                unset($_SESSION['message']);
+            }
+        ?>
+
         <div class="tasklist">
 
             <!-- titelzeile tabelle -->
@@ -25,7 +35,6 @@ require("head.php");
             <!-- liste -->
             <?php
 
-                require_once("init.php");
 
                 //hole alle tasks aus der DB als Array
                 $taskLoader = new TaskLoader();
@@ -36,7 +45,16 @@ require("head.php");
                     $tasktitle = $task['title'];
                     $taskduedate = $task['duedate'];
                     $taskid = $task['id'];
-                    echo "<div class='tasklist__taskline'><h3 class='tasklist_tasktitle'>$tasktitle</h3><p>$taskduedate</p><a href='task-list-details.php?id=$taskid' class='tasklist__taskbutton tasklist__details'></a><a href='edit-task.php?id=$taskid' class='tasklist__taskbutton tasklist__edit'></a><a class='tasklist__taskbutton tasklist__delete'></a></div><hr>";
+                ?>
+                    <div class='tasklist__taskline'>
+                        <h3 class='tasklist_tasktitle'><?= $tasktitle ?></h3>
+                        <p><?= $taskduedate ?></p>
+                        <a href='task-list-details.php?id=<?= $taskid ?>' class='tasklist__taskbutton tasklist__details'></a>
+                        <a href='edit-task.php?id=<?= $taskid ?>' class='tasklist__taskbutton tasklist__edit'></a>
+                        <a href="delete-task.php?id=<?= $taskid ?>" class='tasklist__taskbutton tasklist__delete'></a>
+                    </div>
+                    <hr>
+                <?php
                 }
 
                 

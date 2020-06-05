@@ -7,6 +7,22 @@ require("head.php");
 
     require_once("init.php");
 
+    //save
+    $taskSaver = new TaskSaver();
+
+    if(isset($_POST['save'])){
+        $saveTitle = $_POST['title'];
+        $saveUser = $_POST['user'];
+        $saveStatus = $_POST['status'];
+        $saveDescription = $_POST['description'];
+        $saveDate = $_POST['date'];
+        $saveDuration = 500;
+        $saveId = $_POST['id'];
+        $taskSaver->updateTask($saveId, $saveUser, $saveStatus, $saveTitle, $saveDescription, $saveDuration, $saveDate);
+
+        redirect('task-list.php');
+    }
+
     //hole ein task aus der DB als Array mit GET
     $taskLoader = new TaskLoader();
 
@@ -21,7 +37,6 @@ require("head.php");
     
 
     //hole alle user aus der DB als Array
-    $taskLoader = new TaskLoader();
     $allUsers = $taskLoader->getUsers();
 
     //hole alle status aus der DB als Array
@@ -41,10 +56,6 @@ require("head.php");
 
         <div class="newTask">
             <form method="post" action="<?php echo "edit-task.php?id=$taskID"?>">
-            <div class="newTask__ID">
-                    <label for="id">ID-Nummer:</label>
-                    <input id="id" type="text" name="id" value="<?php echo $taskID; ?>">
-                </div>
                 <div class="newTask__title">
                     <label for="title">Titel:</label>
                     <input id="title" type="text" name="title" value="<?php echo $tasktitle; ?>">
@@ -93,28 +104,12 @@ require("head.php");
                     <label for="date">Zu erledigen bis:</label>
                     <input id="date" type="date" name="date" value="<?php echo $onetask['duedate']; ?>">
                 </div>
+                <input  type="hidden" name="id" value="<?php echo $taskID ?>">
+
                 <input type="submit" class="newTask__savebutton" value="speichern" name="save">
             </form>
             
         </div>
-
-        <?php
-        //save
-        $taskSaver = new TaskSaver();
-
-        if(isset($_POST['save'])){
-            $saveTitle = $_POST['title'];
-            $saveUser = $_POST['user'];
-            $saveStatus = $_POST['status'];
-            $saveDescription = $_POST['description'];
-            $saveDate = $_POST['date'];
-            $saveDuration = 500;
-            $taskSaver->updateTask($taskID, $saveUser, $saveStatus, $saveTitle, $saveDescription, $saveDuration, $saveDate);
-
-            echo "<div class='infobox'>new Task is updated</div>";
-        }
-        ?>
-
 
     </main>
 </body>
