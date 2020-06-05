@@ -26,9 +26,9 @@ require("head.php");
         <div class="tasklist">
 
             <!-- titelzeile tabelle -->
-            <div class='tasklist__taskline tasklist__tabletitleline'>
-                <h2 class='tasklist_tabletitle'>Task</h2>
-                <h2 class='tasklist_tabletitle'>Duedate</h2>
+            <div class="tasklist__taskline tasklist__tabletitleline">
+                <h2 class="tasklist_tabletitle">Task</h2>
+                <h2 class="tasklist_tabletitle">Duedate</h2>
             </div>
             <hr>
 
@@ -46,12 +46,12 @@ require("head.php");
                     $taskduedate = $task['duedate'];
                     $taskid = $task['id'];
                 ?>
-                    <div class='tasklist__taskline'>
-                        <h3 class='tasklist_tasktitle'><?= $tasktitle ?></h3>
+                    <div class="tasklist__taskline">
+                        <h3 class="tasklist_tasktitle"><?= $tasktitle ?></h3>
                         <p><?= $taskduedate ?></p>
-                        <a href='task-list-details.php?id=<?= $taskid ?>' class='tasklist__taskbutton tasklist__details'></a>
-                        <a href='edit-task.php?id=<?= $taskid ?>' class='tasklist__taskbutton tasklist__edit'></a>
-                        <a onclick="return confirm('wirklich Task mit id <?= $taskid ?> löschen?')" href="delete-task.php?id=<?= $taskid ?>" class='tasklist__taskbutton tasklist__delete'></a>
+                        <a href="task-list-details.php?id=<?= $taskid ?>" class="tasklist__taskbutton tasklist__details"></a>
+                        <a href="edit-task.php?id=<?= $taskid ?>" class="tasklist__taskbutton tasklist__edit"></a>
+                        <a onclick="return confirm('wirklich Task mit id <?= $taskid ?> löschen?')" href="delete-task.php?id=<?= $taskid ?>" class="tasklist__taskbutton tasklist__delete"></a>
                     </div>
                     <hr>
                 <?php
