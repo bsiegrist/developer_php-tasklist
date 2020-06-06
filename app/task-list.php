@@ -15,9 +15,9 @@
 
         <!--message anzeigen-->
         <?php
-            if(isset($_SESSION['message'])){
-                echo $_SESSION['message'];
-                unset($_SESSION['message']);
+            if(isset($_SESSION['message'])){ 
+                echo $_SESSION['message']; //wenn message gesetzt, gib sie aus
+                unset($_SESSION['message']); //wenn ausgegeben, dann leere die session speicher wieder, damit nicht bei jedem reload die message wieder kommt.
             }
         ?>
 

@@ -43,8 +43,8 @@
         public function saveTask($user_id, $status_id, $title, $description, $duration, $duedate){
             //prepared statement
             $statement = DB::get()->prepare(
-                "INSERT INTO task(id, user_id, status_id, title, description, duration, duedate, created, updated) 
-                VALUES (NULL, :userid, :statusid, :title, :description, :duration, :duedate, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);"
+                "INSERT INTO task(id, user_id, status_id, title, description, duration, duedate) 
+                VALUES (NULL, :userid, :statusid, :title, :description, :duration, :duedate);"
             );
             //execute
             $statement->execute([':userid' => $user_id, ':statusid' => $status_id, ':title' => $title, ':description' => $description, ':duration' => $duration, ':duedate' => $duedate]);
