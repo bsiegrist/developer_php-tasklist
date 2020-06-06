@@ -1,11 +1,10 @@
 <?php
-require("head.php");
+    require_once("init.php");
+    require("head.php");
 ?>
 
 <body>
     <?php
-
-    require_once("init.php");
 
     //hole ein task aus der DB als Array mit GET
     $taskLoader = new TaskLoader();

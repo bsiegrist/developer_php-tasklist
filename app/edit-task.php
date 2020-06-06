@@ -1,11 +1,10 @@
 <?php
+require_once("init.php");
 require("head.php");
 ?>
 
 <body>
     <?php
-
-    require_once("init.php");
 
     //save
     $taskSaver = new TaskSaver();

@@ -1,11 +1,10 @@
 <?php
+require_once("init.php");
 require("head.php");
 ?>
 
 <body>
     <?php
-
-    require_once("init.php");
 
     //hole alle user aus der DB als Array
     $taskLoader = new TaskLoader();
