@@ -18,7 +18,15 @@ require("head.php");
         $saveDate = $_POST['date'];
         $saveDuration = 500;
         $saveId = $_POST['id'];
-        $taskSaver->updateTask($saveId, $saveUser, $saveStatus, $saveTitle, $saveDescription, $saveDuration, $saveDate);
+
+        try{
+            $taskSaver->updateTask($saveId, $saveUser, $saveStatus, $saveTitle, $saveDescription, $saveDuration, $saveDate);
+            $_SESSION['message'] = '<div class="infobox">Der Task mit dem Titel «'.$saveTitle.'» wurde geändert</div>';
+        } catch (Exception $e){
+            echo $e->getMessage();
+            die();
+        }
+
 
         redirect('task-list.php');
     }

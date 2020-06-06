@@ -12,7 +12,7 @@ require("head.php");
         <!-- buttons -->
         <div class="functions">
             <a href="new-task.php" class="functions__newTask">neuen Task erstellen</a>
-            <a class="functions__deleteAll">alle Tasks löschen</a>
+            <!--<a class="functions__deleteAll">alle Tasks löschen</a>-->
         </div>
 
         <!--message anzeigen-->
@@ -51,7 +51,7 @@ require("head.php");
                         <p><?= $taskduedate ?></p>
                         <a href="task-list-details.php?id=<?= $taskid ?>" class="tasklist__taskbutton tasklist__details"></a>
                         <a href="edit-task.php?id=<?= $taskid ?>" class="tasklist__taskbutton tasklist__edit"></a>
-                        <a onclick="return confirm('wirklich Task mit id <?= $taskid ?> löschen?')" href="delete-task.php?id=<?= $taskid ?>" class="tasklist__taskbutton tasklist__delete"></a>
+                        <a onclick="return confirm('wirklich Task mit dem Titel «<?= $tasktitle ?>» löschen?')" href="delete-task.php?id=<?= $taskid ?>" class="tasklist__taskbutton tasklist__delete"></a>
                     </div>
                     <hr>
                 <?php

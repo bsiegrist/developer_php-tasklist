@@ -24,9 +24,16 @@ require("head.php");
         $saveDescription = $_POST['description'];
         $saveDate = $_POST['date'];
         $saveDuration = 500;
-        $taskSaver->saveTask($saveUser, $saveStatus, $saveTitle, $saveDescription, $saveDuration, $saveDate);
 
-        echo "<div class='infobox'>new Task is saved</div>";
+        try{
+            $taskSaver->saveTask($saveUser, $saveStatus, $saveTitle, $saveDescription, $saveDuration, $saveDate);
+            $_SESSION['message'] = '<div class="infobox">neuer Task mit Titel «'.$saveTitle.'» wurde erstellt</div>';
+        } catch (Exception $e){
+            echo $e->getMessage();
+            die();
+        }
+
+        redirect('task-list.php');
     }
 
     ?>

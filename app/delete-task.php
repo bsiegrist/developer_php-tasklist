@@ -6,9 +6,15 @@
     //task id auslesen
     //funktion delete
     $taskLoader = new TaskLoader();
+
+    //hole ein task aus der DB als Array mit GET für Titel
+    $onetask = $taskLoader->getOneByID($_GET["id"]);
+    $tasktitle = $onetask['title'];
+
+
     try{
-        $onetask = $taskLoader->deleteTask($_GET["id"]);
-        $_SESSION['message'] = "Der Task mit der id {$_GET["id"]} wurde gelöscht";
+        $taskLoader->deleteTask($_GET["id"]);
+        $_SESSION['message'] = '<div class="infobox">Der Task mit dem Titel «'.$tasktitle.'» wurde gelöscht</div>';
     } catch (Exception $e){
         echo $e->getMessage();
         die();
