@@ -1,40 +1,39 @@
 <?php
-require_once("init.php");
-require("head.php");
+    require_once("init.php");
+    require("head.php");
 ?>
 
 <body>
     <?php
+        //hole alle user aus der DB als Array
+        $userLoader = new UserRepository();
+        $allUsers = $userLoader->getUsers();
 
-    //hole alle user aus der DB als Array
-    $taskLoader = new TaskLoader();
-    $allUsers = $taskLoader->getUsers();
+        //hole alle status aus der DB als Array
+        $statusLoader = new StatusRepository();
+        $allStatus = $statusLoader->getStatus();
 
-    //hole alle status aus der DB als Array
-    $allStatus = $taskLoader->getStatus();
+        //save
+        $taskSaver = new TaskRepository();
 
-    //save
-    $taskSaver = new TaskSaver();
+        if(isset($_POST['save'])){
+            $saveTitle = $_POST['title'];
+            $saveUser = $_POST['user'];
+            $saveStatus = $_POST['status'];
+            $saveDescription = $_POST['description'];
+            $saveDate = $_POST['date'];
+            $saveDuration = 500;
 
-    if(isset($_POST['save'])){
-        $saveTitle = $_POST['title'];
-        $saveUser = $_POST['user'];
-        $saveStatus = $_POST['status'];
-        $saveDescription = $_POST['description'];
-        $saveDate = $_POST['date'];
-        $saveDuration = 500;
+            try{
+                $taskSaver->saveTask($saveUser, $saveStatus, $saveTitle, $saveDescription, $saveDuration, $saveDate);
+                $_SESSION['message'] = '<div class="infobox">neuer Task mit Titel «'.$saveTitle.'» wurde erstellt</div>';
+            } catch (Exception $e){
+                echo $e->getMessage();
+                die();
+            }
 
-        try{
-            $taskSaver->saveTask($saveUser, $saveStatus, $saveTitle, $saveDescription, $saveDuration, $saveDate);
-            $_SESSION['message'] = '<div class="infobox">neuer Task mit Titel «'.$saveTitle.'» wurde erstellt</div>';
-        } catch (Exception $e){
-            echo $e->getMessage();
-            die();
+            redirect('task-list.php');
         }
-
-        redirect('task-list.php');
-    }
-
     ?>
 
     <h1>Taskliste</h1>
@@ -58,11 +57,9 @@ require("head.php");
                     <select id="user" name="user">
 
                         <?php
-
                         foreach($allUsers as $user){
                             echo "<option value='$user[id]'>$user[name] $user[lastname]</option>";
                         }
-                        
                         ?>
 
                     </select>
@@ -72,11 +69,9 @@ require("head.php");
                     <select id="status" name="status">
 
                         <?php
-
                             foreach($allStatus as $status){
                             echo "<option value='$status[id]'>$status[display_name]</option>";
                             }
-
                         ?>
 
                     </select>

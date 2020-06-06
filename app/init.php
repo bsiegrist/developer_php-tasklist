@@ -23,7 +23,6 @@ function my_autoload($class_name){
     $file = 'classes/'.$class_name.'.php';
     require_once($file);
 }
-
 spl_autoload_register('my_autoload');
 
 
@@ -31,5 +30,6 @@ spl_autoload_register('my_autoload');
 function print_array($array) {
     echo '<pre>' . print_r($array, true) . '</pre>';
 }
+
 
 ?>

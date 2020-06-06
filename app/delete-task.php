@@ -5,12 +5,11 @@
     //taskloader holen
     //task id auslesen
     //funktion delete
-    $taskLoader = new TaskLoader();
+    $taskLoader = new TaskRepository();
 
     //hole ein task aus der DB als Array mit GET für Titel
     $onetask = $taskLoader->getOneByID($_GET["id"]);
     $tasktitle = $onetask['title'];
-
 
     try{
         $taskLoader->deleteTask($_GET["id"]);
@@ -21,5 +20,4 @@
     }
     //redirect
     redirect('task-list.php');
-
 ?>

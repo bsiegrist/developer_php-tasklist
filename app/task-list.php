@@ -1,9 +1,7 @@
 <?php
-require_once("init.php");
-require("head.php");
-
+    require_once("init.php");
+    require("head.php");
 ?>
-
 
 <body>
     <h1>Taskliste</h1>
@@ -34,10 +32,8 @@ require("head.php");
 
             <!-- liste -->
             <?php
-
-
                 //hole alle tasks aus der DB als Array
-                $taskLoader = new TaskLoader();
+                $taskLoader = new TaskRepository();
                 $alltasks = $taskLoader->getAll();
 
                 //alle als zeile ausgeben
@@ -45,7 +41,7 @@ require("head.php");
                     $tasktitle = $task['title'];
                     $taskduedate = $task['duedate'];
                     $taskid = $task['id'];
-                ?>
+                    ?>
                     <div class="tasklist__taskline">
                         <h3 class="tasklist_tasktitle"><?= $tasktitle ?></h3>
                         <p><?= $taskduedate ?></p>
@@ -54,10 +50,8 @@ require("head.php");
                         <a onclick="return confirm('wirklich Task mit dem Titel «<?= $tasktitle ?>» löschen?')" href="delete-task.php?id=<?= $taskid ?>" class="tasklist__taskbutton tasklist__delete"></a>
                     </div>
                     <hr>
-                <?php
+                    <?php
                 }
-
-                
             ?>
         </div>
     </main>

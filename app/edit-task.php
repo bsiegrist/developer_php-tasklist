@@ -1,54 +1,51 @@
 <?php
-require_once("init.php");
-require("head.php");
+    require_once("init.php");
+    require("head.php");
 ?>
 
 <body>
     <?php
+        //save
+        $taskSaver = new TaskRepository();
 
-    //save
-    $taskSaver = new TaskSaver();
+        if(isset($_POST['save'])){
+            $saveTitle = $_POST['title'];
+            $saveUser = $_POST['user'];
+            $saveStatus = $_POST['status'];
+            $saveDescription = $_POST['description'];
+            $saveDate = $_POST['date'];
+            $saveDuration = 500;
+            $saveId = $_POST['id'];
 
-    if(isset($_POST['save'])){
-        $saveTitle = $_POST['title'];
-        $saveUser = $_POST['user'];
-        $saveStatus = $_POST['status'];
-        $saveDescription = $_POST['description'];
-        $saveDate = $_POST['date'];
-        $saveDuration = 500;
-        $saveId = $_POST['id'];
+            try{
+                $taskSaver->updateTask($saveId, $saveUser, $saveStatus, $saveTitle, $saveDescription, $saveDuration, $saveDate);
+                $_SESSION['message'] = '<div class="infobox">Der Task mit dem Titel «'.$saveTitle.'» wurde geändert</div>';
+            } catch (Exception $e){
+                echo $e->getMessage();
+                die();
+            }
 
-        try{
-            $taskSaver->updateTask($saveId, $saveUser, $saveStatus, $saveTitle, $saveDescription, $saveDuration, $saveDate);
-            $_SESSION['message'] = '<div class="infobox">Der Task mit dem Titel «'.$saveTitle.'» wurde geändert</div>';
-        } catch (Exception $e){
-            echo $e->getMessage();
-            die();
+            redirect('task-list.php');
         }
 
+        //hole ein task aus der DB als Array mit GET
+        $taskLoader = new TaskRepository();
+        $onetask = $taskLoader->getOneByID($_GET["id"]);
 
-        redirect('task-list.php');
-    }
+        $tasktitle = $onetask['title'];
+        $taskduedate = $onetask['duedate'];
+        $userID = $onetask['user_id'];
+        $taskdescription = $onetask['description'];
+        $taskstatus = $onetask['status_id'];
+        $taskID = $onetask['id'];
+        
+        //hole alle user aus der DB als Array
+        $userLoader = new UserRepository();
+        $allUsers = $userLoader->getUsers();
 
-    //hole ein task aus der DB als Array mit GET
-    $taskLoader = new TaskLoader();
-
-    $onetask = $taskLoader->getOneByID($_GET["id"]);
-
-    $tasktitle = $onetask['title'];
-    $taskduedate = $onetask['duedate'];
-    $userID = $onetask['user_id'];
-    $taskdescription = $onetask['description'];
-    $taskstatus = $onetask['status_id'];
-    $taskID = $onetask['id'];
-    
-
-    //hole alle user aus der DB als Array
-    $allUsers = $taskLoader->getUsers();
-
-    //hole alle status aus der DB als Array
-    $allStatus = $taskLoader->getStatus();
-
+        //hole alle status aus der DB als Array
+        $statusLoader = new StatusRepository();
+        $allStatus = $statusLoader->getStatus();
     ?>
 
     <h1>Taskliste</h1>

@@ -5,9 +5,8 @@
 
 <body>
     <?php
-
     //hole ein task aus der DB als Array mit GET
-    $taskLoader = new TaskLoader();
+    $taskLoader = new TaskRepository();
     $onetask = $taskLoader->getOneByID($_GET["id"]);
 
     $tasktitle = $onetask['title'];
@@ -16,13 +15,10 @@
     $taskdescription = $onetask['description'];
     $taskstatus = $onetask['status_id'];
     $taskID = $onetask['id'];
-
     ?>
 
     <h1>Taskliste</h1>
-    
     <main>
-
         <!-- buttons -->
         <div class="functions">
             <a href="task-list.php" class="functions__back">zurück zur Übersicht</a>
@@ -41,8 +37,6 @@
                 echo "<h3>Verantwortlich:</h3> <p>$userID</p>";
             ?>
         </div>
-
-
     </main>
 </body>
 </html>
