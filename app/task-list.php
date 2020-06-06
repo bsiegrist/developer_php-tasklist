@@ -10,7 +10,7 @@
         <!-- buttons -->
         <div class="functions">
             <a href="new-task.php" class="functions__newTask">neuen Task erstellen</a>
-            <!--<a class="functions__deleteAll">alle Tasks löschen</a>-->
+            <a href="new-user.php" class="functions__newTask">neuer User registrieren</a>
         </div>
 
         <!--message anzeigen-->

@@ -12,5 +12,12 @@
             //return
             return $users;
         }
+
+        public function createUser($form){
+            //prepared statement
+            $statement = DB::get()->prepare("INSERT INTO user (username, lastname, name, password) VALUES (:username, :lastname, :name, :password)");
+            //execute
+            $statement->execute($form);
+        }
     }
 ?>
