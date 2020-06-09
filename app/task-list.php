@@ -1,6 +1,8 @@
 <?php
     require_once("init.php");
     require("head.php");
+
+    if (isset($_SESSION['login'])){
 ?>
 
 <body>
@@ -10,7 +12,7 @@
         <!-- buttons -->
         <div class="functions">
             <a href="new-task.php" class="functions__newTask">neuen Task erstellen</a>
-            <a href="new-user.php" class="functions__newTask">neuer User registrieren</a>
+            <a href="logout.php" class="functions__newTask">ausloggen</a>
         </div>
 
         <!--message anzeigen-->
@@ -58,3 +60,30 @@
 </body>
 </html>
 
+<?php
+    }else{
+?>
+<body>
+    <h1>Taskliste</h1>
+    <main>
+        <h2 class="notLoggedIn">
+            du musst dich zuerst einloggen!
+        </h2>
+        <!-- buttons -->
+        <div class="functions">
+            <a href="login.php" class="functions__newTask">einloggen</a>
+        </div>
+        <!--message anzeigen-->
+        <?php
+            if(isset($_SESSION['message'])){ 
+                echo $_SESSION['message']; //wenn message gesetzt, gib sie aus
+                unset($_SESSION['message']); //wenn ausgegeben, dann leere die session speicher wieder, damit nicht bei jedem reload die message wieder kommt.
+            }
+        ?>
+    </main>
+</body>
+</html>
+
+<?php
+    }
+?>

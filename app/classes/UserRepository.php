@@ -19,5 +19,16 @@
             //execute
             $statement->execute($form);
         }
+
+        public function userLogin($form){
+            //prepared statement
+            $statement = DB::get()->prepare("SELECT username, password from user WHERE username = :username AND password = :password");
+            //execute
+            $result = $statement->execute($form);
+            if ($result){
+                return $result;
+            } 
+            throw new Exception("login falsch!");
+        }
     }
 ?>

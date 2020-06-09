@@ -54,8 +54,13 @@ h3{
     border-radius: 5px;
 }
 
+.notLoggedIn{
+    text-align: center;
+}
+
 
 @import "partials/tasklist";
+@import "partials/login.scss";
 @import "partials/tasklist-details";
 @import "partials/functions";
 @import "partials/tasklist-new";
