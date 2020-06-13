@@ -8,27 +8,29 @@
         if(empty($_POST['login-username']) || empty($_POST['login-password'])){
             $_SESSION['message'] = '<div class="infobox">Es fehlt ein Wert, versuchs nochmal</div>';
         } else {
-            //prüfen ob übereinstimmt mit db
-            try{
-                $statement = DB::get()->prepare("SELECT id, password FROM user WHERE username = :username LIMIT 1");
-                $userdata = [
-                    ":username" => $_POST['login-username'],
-                ];
-                $singleUser = $statement->execute($userdata);
-                print_array($singleUser);
+            //hole einen User aus der DB als Array mit POST
+            $userLoader = new UserRepository();
+            $oneUser = $userLoader->getOneUser($_POST["login-username"]);
 
-                /*
-                if ($User && password_verify(password_hash($_POST['password'], PASSWORD_DEFAULT), $User['password'])){
-                    $_SESSION['userID'] = $;
-                    redirect('task-list.php');
+            if ($oneUser === null){
+                $_SESSION['message'] = '<div class="infobox">Dieser User existiert nicht. Versuchs nochmal</div>';
+                redirect("task-list.php");
+            } else{
+                $password = password_hash($oneUser['password'], PASSWORD_DEFAULT);
+                $userID = $oneUser['id'];
+                $username = $oneUser['username'];
+                
+                //prüfen ob übereinstimmt mit db
+                if ($password === $_POST["login-password"]){
+                    $_SESSION['message'] = '<div class="infobox"erfolgreich eingeloggt!</div>';
+                    $_SESSION['userID'] = $userID;
+                    redirect("task-list.php");
+                } else{
+                    $_SESSION['message'] = '<div class="infobox">Das Passwort stimmt nicht. Versuchs nochmal</div>';
+                    redirect("task-list.php");
                 }
-                */
-
-
-            } catch (Exception $e){
-                echo $e->getMessage();
-                die();
             }
+
 
         }
     }

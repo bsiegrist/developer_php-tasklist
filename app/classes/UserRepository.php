@@ -21,18 +21,20 @@
         }
 
 
-        /*
-        public function userLogin($form){
+        public function getOneUser($username){
             //prepared statement
-            $statement = DB::get()->prepare("SELECT username, password from user WHERE username = :username AND password = :password");
+            $statement = DB::get()->prepare("SELECT * FROM user WHERE username = :username");
             //execute
-            $result = $statement->execute($form);
-            if ($result){
-                echo "result aus userrepo: " $result;
-                return $result;
-            } 
-            throw new Exception("login falsch!");
+            $statement -> execute(array(':username' => $username));
+            //fetch
+            $one = $statement-> fetch();
+
+            //wenns nicht existiert, dann null zurückgeben, sonst ausgeben
+            if (empty($one)){
+                return null;
+            } else{
+                return $one;
+            }
         }
-        */
     }
 ?>
