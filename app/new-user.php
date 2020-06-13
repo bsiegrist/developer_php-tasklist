@@ -21,7 +21,7 @@
 
             try{
                 $userLoader = new UserRepository();
-                $allUsers = $userLoader->createUser($form);
+                $createUser = $userLoader->createUser($form);
                 $_SESSION['message'] = '<div class="infobox">neuer user «'.$_POST['username'].'» wurde registriert</div>';
             } catch (Exception $e){
                 echo $e->getMessage();
