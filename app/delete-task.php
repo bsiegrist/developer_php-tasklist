@@ -1,6 +1,8 @@
 <?php
     //init
     require_once("init.php");
+    require("login-validator.php");
+
 
     //taskloader holen
     //task id auslesen

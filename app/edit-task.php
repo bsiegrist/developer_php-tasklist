@@ -1,6 +1,8 @@
 <?php
     require_once("init.php");
     require("head.php");
+    require("login-validator.php");
+
 ?>
 
 <body>
