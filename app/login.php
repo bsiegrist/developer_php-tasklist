@@ -16,13 +16,13 @@
                 $_SESSION['message'] = '<div class="infobox">Dieser User existiert nicht. Versuchs nochmal</div>';
                 redirect("task-list.php");
             } else{
-                $password = password_hash($oneUser['password'], PASSWORD_DEFAULT);
+                $password = $oneUser['password'];
                 $userID = $oneUser['id'];
                 $username = $oneUser['username'];
-                
+
                 //prüfen ob übereinstimmt mit db
-                if ($password === $_POST["login-password"]){
-                    $_SESSION['message'] = '<div class="infobox"erfolgreich eingeloggt!</div>';
+                if (password_verify($_POST["login-password"], $password)){
+                    $_SESSION['message'] = '<div class="infobox">du hast dich erfolgreich eingeloggt!</div>';
                     $_SESSION['userID'] = $userID;
                     redirect("task-list.php");
                 } else{
